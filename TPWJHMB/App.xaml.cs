@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace TPW_MB_JH
+namespace TPWJHMB
 {
     /// <summary>
     /// Interaction logic for App.xaml

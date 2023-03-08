@@ -1,7 +1,7 @@
-﻿<Application x:Class="TPW_MB_JH.App"
+﻿<Application x:Class="TPWJHMB.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:TPW_MB_JH"
+             xmlns:local="clr-namespace:TPWJHMB"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

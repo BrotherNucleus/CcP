@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TPW_MB_JH
+namespace TPWJHMB
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
