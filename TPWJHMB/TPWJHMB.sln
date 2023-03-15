@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32901.82
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPWJHMB", "TPWJHMB.csproj", "{449AA781-A663-4980-A48F-E5DC6745539C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPWJHMB", "TPWJHMB.csproj", "{449AA781-A663-4980-A48F-E5DC6745539C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPWTests", "..\TPWTests\TPWTests.csproj", "{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{449AA781-A663-4980-A48F-E5DC6745539C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{449AA781-A663-4980-A48F-E5DC6745539C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{449AA781-A663-4980-A48F-E5DC6745539C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
