@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPWJHMB", "TPWJHMB.csproj", "{449AA781-A663-4980-A48F-E5DC6745539C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630} = {2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}
+		{40435E21-8912-45C6-918F-0014981F585E} = {40435E21-8912-45C6-918F-0014981F585E}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPWTests", "..\TPWTests\TPWTests.csproj", "{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPWTests", "..\TPWTests\TPWTests.csproj", "{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPWClassLib", "..\TPWClassLib\TPWClassLib.csproj", "{40435E21-8912-45C6-918F-0014981F585E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,10 @@ Global
 		{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D3A9E9B-0D7A-4AA3-A5CE-C487DE112630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40435E21-8912-45C6-918F-0014981F585E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40435E21-8912-45C6-918F-0014981F585E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40435E21-8912-45C6-918F-0014981F585E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40435E21-8912-45C6-918F-0014981F585E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
