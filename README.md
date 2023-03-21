@@ -5,4 +5,4 @@
 | Name Surname (initials) | GUID                                     |
 | ----------------------- | ---------------------------------------- |
 | Jedrzej Huzarski (JH)   | `{47C00E04-CC87-437C-8BDE-DF19A80D6C38}` |
-| Michal Bukowski (MB)    | `{d75e211f-0dc7-408f-be9c-945c85e818a0}` |
+| Michal Bukowski (MB)    | `{B5A56B69-B964-4D51-87BB-2EA11502ACE2}` |
