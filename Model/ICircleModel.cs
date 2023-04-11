@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class IBallModel
+    public interface  ICircleModel
     {
+        int X { get; }
+        int Y { get; }
+
+        int Radius { get; }
+        void DoesPropertyChanged(string propertyName = null);
     }
 }
