@@ -4,6 +4,13 @@ namespace Data
 {
     public abstract class DataAPI
     {
-        private class DataImplementation : DataAPI { }
+        public class DataLayer: DataAPI
+        {
+            public DataLayer() { }
+        }
+        public static DataAPI CreateAPI() 
+        { 
+            return new DataLayer();
+        }
     }
 }
