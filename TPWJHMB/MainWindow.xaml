@@ -5,7 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPWJHMB"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-    </Grid>
+        Title="MainWindow" Height="auto" Width="auto">
+    <Border BorderThickness="4" BorderBrush="Green" Height="420" Width="400">
+        <!--Taken from TP - Mariusz Postol Repository for testing purposes-->
+        <ItemsControl ItemsSource="{Binding Balls}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Ellipse Width="1" Height="1" Fill="Blue" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Top" Value="1" />
+                    <Setter Property="Canvas.Left" Value="1" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
+    </Border>
 </Window>
