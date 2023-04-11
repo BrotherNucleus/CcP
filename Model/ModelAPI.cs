@@ -17,31 +17,29 @@ namespace Model
             get => circleModels;
             set => circleModels = value;
         }
-        public class ModelLayer: ModelAPI
+        public static ModelAPI CreateAPI(LogicAPI logic = default)
+        {
+            return new ModelLayer(logic ?? LogicAPI.CreateAPI());
+        }
+        public abstract void Visualise(int Radious, int CircleNumber, int width, int height);
+        public class ModelLayer : ModelAPI
         {
             private readonly LogicAPI logicAPI;
 
-            public ModelLayer(LogicAPI logic) 
+            public ModelLayer(LogicAPI logic)
             {
                 logicAPI = logic;
             }
-            public override void Visualise(int X, int Y, int Radious, int CircleNumber)
+            public override void Visualise(int Radious, int CircleNumber, int width, int height)
             {
-                logicAPI.createCircleList(2, 2, 1, 1);
+                logicAPI.createCircleList(CircleNumber, Radious, width, height);
                 foreach (Circle circle in logicAPI.Circles)
                 {
                     circleModels.Add(new CircleModel(circle));
 
                 }
-                
+
             }
         }
-        public static ModelAPI CreateAPI(LogicAPI logic = default) 
-        {
-            return new ModelLayer(logic ?? LogicAPI.CreateAPI());
-        }
-        public abstract void Visualise(int X, int Y, int Radious,int CircleNumber);
-
-        
     }
 }

@@ -3,12 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TPWJHMB"
+        xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="auto" Width="auto">
-    <Border BorderThickness="4" BorderBrush="Green" Height="420" Width="400">
+    <Window.DataContext>
+        <vm:MainVindowViewModel></vm:MainVindowViewModel></Window.DataContext>
+    <Canvas Width="400" Height="430">
+        <Button x:Name="StartBttn" Width="50" Height="20" Canvas.Top="5" Canvas.Left="205" Command="{Binding OnStartButtonClicked}">start</Button>
+        <Border BorderThickness="4" BorderBrush="Green" Height="400" Width="400" Canvas.Top="30">
         <!--Taken from TP - Mariusz Postol Repository for testing purposes-->
-        <ItemsControl ItemsSource="{Binding Balls}">
+        <ItemsControl ItemsSource="{Binding circleModels}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas />
@@ -16,15 +20,16 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Ellipse Width="1" Height="1" Fill="Blue" />
+                    <Ellipse Width="20" Height="20" Fill="Blue" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
                 <Style TargetType="ContentPresenter">
-                    <Setter Property="Canvas.Top" Value="1" />
-                    <Setter Property="Canvas.Left" Value="1" />
+                    <Setter Property="Canvas.Top" Value="200" />
+                    <Setter Property="Canvas.Left" Value="200" />
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>
     </Border>
+    </Canvas>
 </Window>
