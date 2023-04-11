@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TPWClassLib;
+using Logic;
 
 namespace TPWTests
 {
@@ -19,12 +19,12 @@ namespace TPWTests
             int testCircleNumber = 3;
             int testWidth = 16, testHeight = 16;
             int testRadius = 3;
-            Scene scene = new Scene(testWidth, testHeight, testCircleNumber, testRadius);
+            LogicAPI logicAPI = new LogicAPI(testWidth, testHeight, testCircleNumber, testRadius);
 
-            Assert.AreEqual(testCircleNumber, scene.Circles.Count);
-            Assert.AreEqual(testWidth, scene.width);
-            Assert.AreEqual(testHeight, scene.height);
-            Assert.AreEqual(testRadius, scene.Circles[0].Radius);
+            Assert.AreEqual(testCircleNumber, logicAPI.Circles.Count);
+            Assert.AreEqual(testWidth, logicAPI.width);
+            Assert.AreEqual(testHeight, logicAPI.height);
+            Assert.AreEqual(testRadius, logicAPI.Circles[0].Radius);
         }
 
         [TestMethod]
@@ -34,15 +34,15 @@ namespace TPWTests
             int testCircleNumber = 1;
             int testWidth = 16, testHeight = 16;
             int testRadius = 3;
-            Scene scene = new Scene(testWidth, testHeight, testCircleNumber, testRadius);
+            LogicAPI logicAPI = new LogicAPI(testWidth, testHeight, testCircleNumber, testRadius);
 
-            Circle circle = scene.createCircle(testRadius);
+            Circle circle = logicAPI.createCircle(testRadius);
 
             Assert.IsTrue(circle != null);
             Assert.IsTrue(circle.X > testRadius);
-            Assert.IsTrue(circle.X < scene.width - testRadius);
+            Assert.IsTrue(circle.X < logicAPI.width - testRadius);
             Assert.IsTrue(circle.Y > testRadius);
-            Assert.IsTrue(circle.Y < scene.height - testRadius);
+            Assert.IsTrue(circle.Y < logicAPI.height - testRadius);
             Assert.AreEqual(Color.AliceBlue, circle.color);
             Assert.AreEqual(testRadius, circle.Radius);
         }
@@ -54,13 +54,13 @@ namespace TPWTests
             int testCircleNumber = 1;
             int testWidth = 32, testHeight = 32;
             int testRadius = 3;
-            Scene scene = new Scene(testWidth, testHeight, testCircleNumber, testRadius);
+            LogicAPI logicAPI = new LogicAPI(testWidth, testHeight, testCircleNumber, testRadius);
 
             int newtestCircleNumber = 5;
 
-            scene.createCircleList(newtestCircleNumber, testRadius);
+            logicAPI.createCircleList(newtestCircleNumber, testRadius);
 
-            Assert.AreEqual(newtestCircleNumber, scene.Circles.Count);
+            Assert.AreEqual(newtestCircleNumber, logicAPI.Circles.Count);
         }
     }
 }

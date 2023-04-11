@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Drawing;
-using TPWClassLib;
+using Logic;
 
 namespace TPWTests
 {

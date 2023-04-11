@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TPWClassLib
+namespace Logic
 {
-    public class Scene
-    {
-        public Scene(int width, int height, int circleNumber, int radius) 
+    public class LogicAPI 
+    { 
+        public LogicAPI(int width, int height, int circleNumber, int radius) 
         {
             this.width = width;
             this.height = height;
@@ -21,9 +21,7 @@ namespace TPWClassLib
         public int height { get; }
 
         public int Enabled { get; set; }
-
         public List<Circle> Circles { get; } = new List<Circle>();
-
         public Circle createCircle(int radius)
         {
             Random random = new Random();
@@ -62,5 +60,6 @@ namespace TPWClassLib
                 this.Circles.Add(circle);
             }
         }
+
     }
 }
