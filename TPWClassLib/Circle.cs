@@ -9,13 +9,19 @@ namespace TPWClassLib
 {
     public class Circle
     {
-        public Circle(int radius, Color color)
+        public Circle(int radius, Color clr, int x, int y)
         {
-            this.radius = radius;
-            this.color = color;
+            Radius = radius;
+            color = clr;
+            X = x;
+            Y = y;
         }
-        public int radius { get; set; }
+        public int Radius { get; set; }
 
         public Color color { get; set; }
+
+        public int X { get; set; }
+
+        public int Y { get; set; }
     }
 }

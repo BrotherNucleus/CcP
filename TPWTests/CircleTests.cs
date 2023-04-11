@@ -13,12 +13,16 @@ namespace TPWTests
         public void CircleConstructorTest()
         {
             int testRadius = 1;
+            int testX = 0;
+            int testY = 0;
             Color testColor = Color.Tomato;
 
-            Circle circle = new Circle(testRadius, testColor);
+            Circle circle = new Circle(testRadius, testColor, testX, testY);
 
-            Assert.AreEqual(testRadius, circle.radius);
+            Assert.AreEqual(testRadius, circle.Radius);
             Assert.AreEqual(testColor, circle.color);
+            Assert.AreEqual(testX, circle.X);
+            Assert.AreEqual(testY, circle.Y);
         }
 
         [TestMethod]
@@ -27,16 +31,17 @@ namespace TPWTests
         {
             int testRadius = 1;
             int changedRadius = 3;
+            int testX = 0;
+            int testY = 0;
             Color testColor = Color.Tomato;
 
-            Circle circle = new Circle(testRadius, testColor);
+            Circle circle = new Circle(testRadius, testColor, testX, testY);
 
-            Assert.AreEqual(testRadius, circle.radius);
+            Assert.AreEqual(testRadius, circle.Radius);
 
-            circle.radius = changedRadius;
+            circle.Radius = changedRadius;
 
-            Assert.AreNotEqual(testRadius, circle.radius);
-            Assert.AreEqual(changedRadius, circle.radius);
+            Assert.AreEqual(changedRadius, circle.Radius);
         }
 
         [TestMethod]
@@ -44,17 +49,41 @@ namespace TPWTests
         public void CircleColorTest()
         {
             int testRadius = 1;
+            int testX = 0;
+            int testY = 0;
             Color testColor = Color.Tomato;
             Color changedColor = Color.SteelBlue;
 
-            Circle circle = new Circle(testRadius, testColor);
+            Circle circle = new Circle(testRadius, testColor, testX, testY);
 
             Assert.AreEqual(testColor, circle.color);
 
             circle.color = changedColor;
 
-            Assert.AreNotEqual(testColor, circle.color);
             Assert.AreEqual(changedColor, circle.color);
+        }
+
+        [TestMethod]
+
+        public void CircleXandYTest()
+        {
+            int testRadius = 1;
+            int testX = 0;
+            int testY = 0;
+            Color testColor = Color.Tomato;
+            int changedX = 12;
+            int changedY = 32;
+
+            Circle circle = new Circle(testRadius, testColor, testX, testY);
+
+            Assert.AreEqual(testX, circle.X);
+            Assert.AreEqual(testY, circle.Y);
+
+            circle.X = changedX;
+            circle.Y = changedY;
+
+            Assert.AreEqual(changedX, circle.X);
+            Assert.AreEqual(changedY, circle.Y);
         }
     }
 }
