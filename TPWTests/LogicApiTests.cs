@@ -10,7 +10,7 @@ using Logic;
 namespace TPWTests
 {
     [TestClass]
-    public class SceneTests
+    public class LogicApiTests
     {
         [TestMethod]
 
@@ -22,8 +22,6 @@ namespace TPWTests
             LogicAPI logicAPI = new LogicAPI(testWidth, testHeight, testCircleNumber, testRadius);
 
             Assert.AreEqual(testCircleNumber, logicAPI.Circles.Count);
-            Assert.AreEqual(testWidth, logicAPI.width);
-            Assert.AreEqual(testHeight, logicAPI.height);
             Assert.AreEqual(testRadius, logicAPI.Circles[0].Radius);
         }
 
@@ -36,13 +34,13 @@ namespace TPWTests
             int testRadius = 3;
             LogicAPI logicAPI = new LogicAPI(testWidth, testHeight, testCircleNumber, testRadius);
 
-            Circle circle = logicAPI.createCircle(testRadius);
+            Circle circle = logicAPI.createCircle(testRadius, testWidth, testHeight);
 
             Assert.IsTrue(circle != null);
             Assert.IsTrue(circle.X > testRadius);
-            Assert.IsTrue(circle.X < logicAPI.width - testRadius);
+            Assert.IsTrue(circle.X < testWidth - testRadius);
             Assert.IsTrue(circle.Y > testRadius);
-            Assert.IsTrue(circle.Y < logicAPI.height - testRadius);
+            Assert.IsTrue(circle.Y < testHeight - testRadius);
             Assert.AreEqual(Color.AliceBlue, circle.color);
             Assert.AreEqual(testRadius, circle.Radius);
         }
@@ -58,7 +56,7 @@ namespace TPWTests
 
             int newtestCircleNumber = 5;
 
-            logicAPI.createCircleList(newtestCircleNumber, testRadius);
+            logicAPI.createCircleList(newtestCircleNumber, testRadius, testWidth, testHeight);
 
             Assert.AreEqual(newtestCircleNumber, logicAPI.Circles.Count);
         }
