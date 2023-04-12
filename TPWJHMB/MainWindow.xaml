@@ -7,9 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="auto" Width="auto">
     <Window.DataContext>
-        <vm:MainVindowViewModel></vm:MainVindowViewModel></Window.DataContext>
+        <vm:MainVindowViewModel></vm:MainVindowViewModel>
+    </Window.DataContext>
     <Canvas Width="400" Height="430">
-        <Button x:Name="StartBttn" Width="50" Height="20" Canvas.Top="5" Canvas.Left="205" Command="{Binding OnStartButtonClicked}">start</Button>
+        <Button x:Name="StartBttn" Content="{Binding StartButton}"  Width="50" Height="20" Canvas.Top="5" Canvas.Left="205" Command="{Binding startButtonClicked}"></Button>
         <Border BorderThickness="4" BorderBrush="Green" Height="400" Width="400" Canvas.Top="30">
         <!--Taken from TP - Mariusz Postol Repository for testing purposes-->
         <ItemsControl ItemsSource="{Binding circleModels}">
@@ -25,8 +26,8 @@
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
                 <Style TargetType="ContentPresenter">
-                    <Setter Property="Canvas.Top" Value="200" />
-                    <Setter Property="Canvas.Left" Value="200" />
+                    <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                    <Setter Property="Canvas.Left" Value="{Binding X}" />
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>

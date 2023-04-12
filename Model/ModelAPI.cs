@@ -22,6 +22,7 @@ namespace Model
             return new ModelLayer(logic ?? LogicAPI.CreateAPI());
         }
         public abstract void Visualise(int Radious, int CircleNumber, int width, int height);
+        public abstract void UpdatePosition();
         public class ModelLayer : ModelAPI
         {
             private readonly LogicAPI logicAPI;
@@ -39,6 +40,13 @@ namespace Model
 
                 }
 
+            }
+            public override void UpdatePosition()
+            {
+                foreach (CircleModel circle in CircleModels)
+                {
+                    circle.Update();
+                }
             }
         }
     }

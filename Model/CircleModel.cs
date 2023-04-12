@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using Logic;
+using System.Data;
 
 namespace Model
 {
@@ -14,6 +15,7 @@ namespace Model
         private int xVal;
         private int yVal;
         private int radiusVal;
+        private readonly ICircle circle;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -55,6 +57,11 @@ namespace Model
             X = circle.X;
             Y = circle.Y;
             Radius = circle.Radius;
+        }
+        public void Update()
+        {
+            X = circle.X;
+            Y = circle.Y;
         }
 
         private void OnPropertyChanged( object sender, PropertyChangedEventArgs e)
