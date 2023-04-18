@@ -10,27 +10,36 @@
         <vm:MainVindowViewModel></vm:MainVindowViewModel>
     </Window.DataContext>
     <Canvas Width="700" Height="730">
-        <Button x:Name="StartButton" Content="{Binding StartButton}"  Width="50" Height="20" Canvas.Top="5" Canvas.Left="205" Command="{Binding startButtonClicked}"></Button>
+        <TextBox Width="50" Height="20" Canvas.Top="5" Canvas.Left="150" Text="{Binding CircleNumber, UpdateSourceTrigger=LostFocus}"/>
+        <Button x:Name="StartButton" Content="{Binding StartButton}"  Width="50" Height="20" Canvas.Top="5" Canvas.Left="550" Command="{Binding startButtonClicked}" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
         <Border BorderThickness="4" BorderBrush="Green" Height="700" Width="700" Canvas.Top="30">
-        <!--Taken from TP - Mariusz Postol Repository for testing purposes-->
-        <ItemsControl ItemsSource="{Binding circleModels}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Canvas />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Ellipse Width="{Binding Radius}" Height="{Binding Radius}" Fill="Blue" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemContainerStyle>
-                <Style TargetType="ContentPresenter">
-                    <Setter Property="Canvas.Top" Value="{Binding Y}" />
-                    <Setter Property="Canvas.Left" Value="{Binding X}" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-        </ItemsControl>
-    </Border>
+            <!--Taken from TP - Mariusz Postol Repository for testing purposes-->
+            <ItemsControl ItemsSource="{Binding circleModels}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse Width="{Binding Radius}" Height="{Binding Radius}">
+                            <Ellipse.Fill>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <Color A="255" R="255" G="0" B="0" />
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                        <Setter Property="Canvas.Left" Value="{Binding X}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
+        </Border>
     </Canvas>
 </Window>

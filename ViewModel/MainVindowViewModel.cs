@@ -28,6 +28,7 @@ namespace ViewModel
             modelApi = ModelAPI.CreateAPI();
             startButton = "start";
             startButtonClicked = new RelayCommand(()=>OnStartButtonClicked());
+            circleNumber = 10;
             //timer = new System.Timers.Timer();
             //timer.Interval = 1000/30;
            // timer.Elapsed += UpdatePos;
@@ -68,7 +69,7 @@ namespace ViewModel
         public void OnStartButtonClicked()
         {
                 
-                modelApi.Visualise(20, 3, width, height);
+                modelApi.Visualise(30, CircleNumber, width, height);
                 StartButton = "working";
             
         }
