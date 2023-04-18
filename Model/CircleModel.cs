@@ -29,7 +29,7 @@ namespace Model
             set
             {
                 radiusVal = value;
-                DoesPropertyChanged("Radius");
+                //DoesPropertyChanged("Radius");
             }
         }
         public int X

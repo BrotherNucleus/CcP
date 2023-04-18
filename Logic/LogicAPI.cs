@@ -64,7 +64,7 @@ namespace Logic
                     valid = true;
 
                 } while (!valid);
-                return new Circle(radius, Color.AliceBlue, x, y, 1);
+                return new Circle(radius, Color.AliceBlue, x, y, speed);
             }
 
             public override void createCircleList(int circleNumber, int radius, int width, int height)

@@ -10,8 +10,8 @@ namespace ViewModel
     public class MainVindowViewModel : INotifyPropertyChanged
     {
         private int circleNumber;
-        private int height = 350;
-        private int width = 350;
+        private int height = 700;
+        private int width = 700;
         private string startButton;
         private static System.Timers.Timer timer;
 
@@ -61,14 +61,14 @@ namespace ViewModel
             get => circleNumber; set => circleNumber = value;
         }
 
-        private void UpdatePos(Object source, System.Timers.ElapsedEventArgs e)
-        {
-            modelApi.UpdatePosition();
-        }
+        //private void UpdatePos(Object source, System.Timers.ElapsedEventArgs e)
+        //{
+        //    modelApi.UpdatePosition();
+        //}
         public void OnStartButtonClicked()
         {
                 
-                modelApi.Visualise(2, 3, width, height);
+                modelApi.Visualise(20, 3, width, height);
                 StartButton = "working";
             
         }

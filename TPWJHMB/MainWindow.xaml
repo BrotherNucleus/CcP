@@ -9,9 +9,9 @@
     <Window.DataContext>
         <vm:MainVindowViewModel></vm:MainVindowViewModel>
     </Window.DataContext>
-    <Canvas Width="400" Height="430">
+    <Canvas Width="700" Height="730">
         <Button x:Name="StartButton" Content="{Binding StartButton}"  Width="50" Height="20" Canvas.Top="5" Canvas.Left="205" Command="{Binding startButtonClicked}"></Button>
-        <Border BorderThickness="4" BorderBrush="Green" Height="400" Width="400" Canvas.Top="30">
+        <Border BorderThickness="4" BorderBrush="Green" Height="700" Width="700" Canvas.Top="30">
         <!--Taken from TP - Mariusz Postol Repository for testing purposes-->
         <ItemsControl ItemsSource="{Binding circleModels}">
             <ItemsControl.ItemsPanel>
@@ -21,7 +21,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Ellipse Width="20" Height="20" Fill="Blue" />
+                    <Ellipse Width="{Binding Radius}" Height="{Binding Radius}" Fill="Blue" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>

@@ -13,7 +13,10 @@ namespace Logic
         private int Xval;
         private int Yval;
         private int Speedval;
-        private int Radiusval = 5;
+        private int Radiusval;
+        private Random rand = new Random();
+        private int XDir = 0;
+        private int YDir = 0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -28,6 +31,11 @@ namespace Logic
             Xval = x;
             Yval = y;
             Speedval = speed;
+            while(XDir == 0 || YDir == 0)
+            {
+                XDir = rand.Next(-2, 2);
+                YDir = rand.Next(-2, 2);
+            }
         }
         public int Radius
         {
@@ -68,7 +76,7 @@ namespace Logic
             set 
             {
                 this.Speedval = value;
-                DoesPropertyChanged(nameof(Speed));
+                //DoesPropertyChanged(nameof(Speed));
             } 
         }
 
@@ -76,9 +84,11 @@ namespace Logic
         {
             while (true)
             {
-                X = X + Speed;
-                Y = Y + Speed;
-                Thread.Sleep(1);
+                if(X > 700 - Radius - 4 || X < 4) { XDir *= -1; }
+                if (Y > 700 - Radius - 4 || Y < 4) { YDir *= -1; }
+                X = X + XDir*Speed;
+                Y = Y + YDir*Speed;
+                Thread.Sleep(10);
             }
             
         }
