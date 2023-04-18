@@ -10,7 +10,7 @@ using System.Data;
 
 namespace Model
 {
-    internal class CircleModel : ICircleModel
+    public class CircleModel : ICircleModel
     {
         private int xVal;
         private int yVal;

@@ -1,64 +1,37 @@
-﻿//using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using System;
-//using System.Collections.Generic;
-//using System.Drawing;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using Logic;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Logic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace TPWTests
-//{
-//    [TestClass]
-//    public class LogicApiTests
-//    {
-//        [TestMethod]
+namespace Logic.Tests
+{
+    [TestClass]
+    public class LogicAPITests
+    {
+        [TestMethod]
+        public void createCircleListTest()
+        {
+            LogicAPI testLogic = LogicAPI.CreateAPI();
+            int testCircleNum = 5;
+            int testRadius = 20;
+            int testWidth = 700;
+            int testHeight = 700;
 
-//        public void SceneConstructorTest()
-//        {
-//            int testCircleNumber = 3;
-//            int testWidth = 16, testHeight = 16;
-//            int testRadius = 3;
-//            LogicAPI logicAPI = new LogicAPI(testWidth, testHeight, testCircleNumber, testRadius);
+            testLogic.createCircleList(testCircleNum, testRadius, testWidth, testHeight);
 
-//            Assert.AreEqual(testCircleNumber, logicAPI.Circles.Count);
-//            Assert.AreEqual(testRadius, logicAPI.Circles[0].Radius);
-//        }
+            Assert.IsNotNull(testLogic.GetCircles());
+            Assert.AreEqual(testCircleNum, testLogic.GetCircles().Count());
+        }
 
-//        [TestMethod]
+        [TestMethod]
+        public void CreateAPITest()
+        {
+            LogicAPI logicTest = LogicAPI.CreateAPI();
+            Assert.IsNotNull(logicTest);
 
-//        public void SceneCreateCricleTest()
-//        {
-//            int testCircleNumber = 1;
-//            int testWidth = 16, testHeight = 16;
-//            int testRadius = 3;
-//            LogicAPI logicAPI = new LogicAPI(testWidth, testHeight, testCircleNumber, testRadius);
-
-//            Circle circle = logicAPI.createCircle(testRadius, testWidth, testHeight);
-
-//            Assert.IsTrue(circle != null);
-//            Assert.IsTrue(circle.X > testRadius);
-//            Assert.IsTrue(circle.X < testWidth - testRadius);
-//            Assert.IsTrue(circle.Y > testRadius);
-//            Assert.IsTrue(circle.Y < testHeight - testRadius);
-//            Assert.AreEqual(Color.AliceBlue, circle.color);
-//            Assert.AreEqual(testRadius, circle.Radius);
-//        }
-
-//        [TestMethod]
-
-//        public void SceneCreateCircleListTest()
-//        {
-//            int testCircleNumber = 1;
-//            int testWidth = 32, testHeight = 32;
-//            int testRadius = 3;
-//            LogicAPI logicAPI = new LogicAPI(testWidth, testHeight, testCircleNumber, testRadius);
-
-//            int newtestCircleNumber = 5;
-
-//            logicAPI.createCircleList(newtestCircleNumber, testRadius, testWidth, testHeight);
-
-//            Assert.AreEqual(newtestCircleNumber, logicAPI.Circles.Count);
-//        }
-//    }
-//}
+        }
+    }
+}
