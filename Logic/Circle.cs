@@ -28,20 +28,9 @@ namespace Logic
 
         public Color color { get; set; }
 
-        public int X { get=> this.X;
-            set{
-                this.X = value;
-                DoesPropertyChanged(nameof(X));
-               } 
-        }
+        public int X { get; set; }
 
-        public int Y { get =>this.Y;
-            set
-            {
-                this.Y = value;
-                DoesPropertyChanged(nameof(Y));
-            }
-        }
+        public int Y { get; set; }
 
         public int Speed { get; set; }
 

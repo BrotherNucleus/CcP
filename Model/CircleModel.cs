@@ -53,7 +53,8 @@ namespace Model
 
         public CircleModel(ICircle circle) 
         {
-            circle.PropertyChanged += OnPropertyChanged;
+            this.circle = circle;
+            this.circle.PropertyChanged += OnPropertyChanged;
             X = circle.X;
             Y = circle.Y;
             Radius = circle.Radius;
