@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -17,11 +18,18 @@ namespace Logic
             createCircleList(circleNumber, radius, width, height);
         }*/
 
-        public ObservableCollection<Circle> Circles { get; } = new ObservableCollection<Circle>();
+        private List<ICircle> Circles = new List<ICircle>();
+        private List<Thread> threadList = new List<Thread>();
         public abstract void createCircleList(int circleNumber, int radius, int width, int height);
+        public abstract void Start();
+        public abstract List<ICircle> GetCircles();
         public class LogicLayer : LogicAPI
         {
             private DataAPI dataAPI;
+            public override List <ICircle> GetCircles()
+            {
+                return this.Circles;
+            }
 
             public LogicLayer(DataAPI dataAPI)
             {
@@ -56,16 +64,28 @@ namespace Logic
                     valid = true;
 
                 } while (!valid);
-                return new Circle(radius, Color.AliceBlue, x, y, speed);
+                return new Circle(radius, Color.AliceBlue, x, y, 1);
             }
 
             public override void createCircleList(int circleNumber, int radius, int width, int height)
             {
-                Circles.Clear();
+                //Circles.Clear();
                 for (int i = 0; i < circleNumber; i++)
                 {
                     Circle circle = createCircle(radius, width, height);
                     this.Circles.Add(circle);
+                }
+
+                foreach (Circle circle in Circles)
+                {
+                    this.threadList.Add(new Thread(new ThreadStart(circle.MoveBall)));
+                }
+            }
+            public override void Start()
+            {
+                foreach(Thread thread in threadList)
+                {
+                    thread.Start();
                 }
             }
         }

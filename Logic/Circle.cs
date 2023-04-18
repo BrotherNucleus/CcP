@@ -4,12 +4,17 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Logic
 {
     public class Circle: ICircle
     {
+        private int Xval;
+        private int Yval;
+        private int Speedval;
+        private int Radiusval = 5;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void DoesPropertyChanged(string propertyName)
@@ -18,28 +23,63 @@ namespace Logic
         }
         public Circle(int radius, Color clr, int x, int y, int speed)
         {
-            Radius = radius;
+            Radiusval = radius;
             color = clr;
-            X = x;
-            Y = y;
-            Speed = speed;
+            Xval = x;
+            Yval = y;
+            Speedval = speed;
         }
-        public int Radius { get; set; }
+        public int Radius
+        {
+            get => this.Radiusval;
+            set
+            {
+                this.Radius = value;
+                //DoesPropertyChanged(nameof(Radiusval));
+            }
+        }
 
         public Color color { get; set; }
 
-        public int X { get; set; }
+        public int X
+        {
+            get => this.Xval;
+            set
+            {
+                
+                this.Xval = value;
+                DoesPropertyChanged(nameof(X));
+            }
+        }
 
-        public int Y { get; set; }
+        public int Y
+        {
+            get => this.Yval;
+            set
+            {
+                this.Yval = value;
+                DoesPropertyChanged(nameof(Y));
+            }
+        }
 
-        public int Speed { get; set; }
+        public int Speed 
+        { get=> this.Speedval;
+
+            set 
+            {
+                this.Speedval = value;
+                DoesPropertyChanged(nameof(Speed));
+            } 
+        }
 
         public void MoveBall()
         {
-            
-                X += Speed;
-                Y += Speed;
-
+            while (true)
+            {
+                X = X + Speed;
+                Y = Y + Speed;
+                Thread.Sleep(1);
+            }
             
         }
     }

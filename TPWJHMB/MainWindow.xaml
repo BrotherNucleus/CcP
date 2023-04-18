@@ -10,7 +10,7 @@
         <vm:MainVindowViewModel></vm:MainVindowViewModel>
     </Window.DataContext>
     <Canvas Width="400" Height="430">
-        <Button x:Name="StartBttn" Content="{Binding StartButton}"  Width="50" Height="20" Canvas.Top="5" Canvas.Left="205" Command="{Binding startButtonClicked}"></Button>
+        <Button x:Name="StartButton" Content="{Binding StartButton}"  Width="50" Height="20" Canvas.Top="5" Canvas.Left="205" Command="{Binding startButtonClicked}"></Button>
         <Border BorderThickness="4" BorderBrush="Green" Height="400" Width="400" Canvas.Top="30">
         <!--Taken from TP - Mariusz Postol Repository for testing purposes-->
         <ItemsControl ItemsSource="{Binding circleModels}">

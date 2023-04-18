@@ -69,14 +69,8 @@ namespace Model
         {
             ICircle c = (ICircle)sender;
 
-            if(e.PropertyName == "X")
-            {
-                X = c.X;
-            }
-            if(e.PropertyName == "Y")
-            {
-                Y = c.Y;
-            }
+            X = c.X;
+            Y = c.Y;
         }
     }
 }

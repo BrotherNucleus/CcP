@@ -28,13 +28,13 @@ namespace ViewModel
             modelApi = ModelAPI.CreateAPI();
             startButton = "start";
             startButtonClicked = new RelayCommand(()=>OnStartButtonClicked());
-            timer = new System.Timers.Timer();
-            timer.Interval = 1000/30;
-            timer.Elapsed += UpdatePos;
-            timer.AutoReset = true;
-            timer.Enabled = true;
+            //timer = new System.Timers.Timer();
+            //timer.Interval = 1000/30;
+           // timer.Elapsed += UpdatePos;
+            //timer.AutoReset = true;
+            //timer.Enabled = true;
         }
-        public event PropertyChangedEventHandler PropertyChanged;
+        
         public ICommand startButtonClicked {get;set;}
         public string StartButton
         {
@@ -42,6 +42,7 @@ namespace ViewModel
             set
             {
                 startButton = value;
+                DoesPropertyChanged("StartButton");
 
             }
         }
@@ -66,12 +67,14 @@ namespace ViewModel
         }
         public void OnStartButtonClicked()
         {
-           
-                modelApi.Visualise(2, 2, width, height);
-                startButton = "working";
+                
+                modelApi.Visualise(2, 3, width, height);
+                StartButton = "working";
             
         }
-        protected virtual void DoesPropertyChanged([CallerMemberName] string propertyName = null) {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void DoesPropertyChanged([CallerMemberName] string propertyName = null) 
+        {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }

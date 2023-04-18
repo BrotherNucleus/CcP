@@ -34,11 +34,12 @@ namespace Model
             public override void Visualise(int Radious, int CircleNumber, int width, int height)
             {
                 logicAPI.createCircleList(CircleNumber, Radious, width, height);
-                foreach (Circle circle in logicAPI.Circles)
+                foreach (ICircle circle in logicAPI.GetCircles())
                 {
                     circleModels.Add(new CircleModel(circle));
 
                 }
+                logicAPI.Start();
 
             }
             public override void UpdatePosition()
