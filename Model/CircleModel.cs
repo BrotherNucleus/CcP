@@ -15,7 +15,7 @@ namespace Model
         private int xVal;
         private int yVal;
         private int radiusVal;
-        private readonly ICircle circle;
+        private readonly ICircleLogic circle;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -51,7 +51,7 @@ namespace Model
             }
         }
 
-        public CircleModel(ICircle circle) 
+        public CircleModel(ICircleLogic circle) 
         {
             this.circle = circle;
             this.circle.PropertyChanged += OnPropertyChanged;
@@ -67,7 +67,7 @@ namespace Model
 
         private void OnPropertyChanged( object sender, PropertyChangedEventArgs e)
         {
-            ICircle c = (ICircle)sender;
+            ICircleLogic c = (ICircleLogic)sender;
 
             X = c.X;
             Y = c.Y;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    public interface ICircle : INotifyPropertyChanged
+    public interface ICircleLogic : INotifyPropertyChanged
     {
         int X { get; }
         int Y { get; }

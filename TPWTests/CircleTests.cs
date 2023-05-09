@@ -18,7 +18,7 @@ namespace TPWTests
             int testY = 0;
             Color testColor = Color.Tomato;
 
-            Circle circle = new Circle(testRadius, testColor, testX, testY,2);
+            CircleLogic circle = new CircleLogic(testRadius, testColor, testX, testY,2);
 
             Assert.AreEqual(testRadius, circle.Radius);
             Assert.AreEqual(testColor, circle.color);
@@ -36,7 +36,7 @@ namespace TPWTests
             int testY = 0;
             Color testColor = Color.Tomato;
 
-            Circle circle = new Circle(testRadius, testColor, testX, testY, 2);
+            CircleLogic circle = new CircleLogic(testRadius, testColor, testX, testY, 2);
 
             Assert.AreEqual(testRadius, circle.Radius);
 
@@ -55,7 +55,7 @@ namespace TPWTests
             Color testColor = Color.Tomato;
             Color changedColor = Color.SteelBlue;
 
-            Circle circle = new Circle(testRadius, testColor, testX, testY, 2);
+            CircleLogic circle = new CircleLogic(testRadius, testColor, testX, testY, 2);
 
             Assert.AreEqual(testColor, circle.color);
 
@@ -75,7 +75,7 @@ namespace TPWTests
             int changedX = 12;
             int changedY = 32;
 
-            Circle circle = new Circle(testRadius, testColor, testX, testY, 2);
+            CircleLogic circle = new CircleLogic(testRadius, testColor, testX, testY, 2);
 
             Assert.AreEqual(testX, circle.X);
             Assert.AreEqual(testY, circle.Y);

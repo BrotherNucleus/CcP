@@ -22,7 +22,7 @@ namespace Model.Tests
             int testY = 10;
             int testSpeed = 2;
             Color testColor = Color.Tomato;
-            Circle testCircle = new Circle(testRadius, testColor, testX, testY, testSpeed);
+            CircleLogic testCircle = new CircleLogic(testRadius, testColor, testX, testY, testSpeed);
 
             CircleModel circleModel = new CircleModel(testCircle);
 
