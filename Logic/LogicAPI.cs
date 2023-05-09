@@ -15,7 +15,7 @@ namespace Logic
 {
     public abstract class LogicAPI 
     { 
-        /*public LogicAPI(int width, int height, int circleNumber, int radius) 
+        /*public LogicAPI(float width, float height, float circleNumber, float radius) 
         {
             createCircleList(circleNumber, radius, width, height);
         }*/

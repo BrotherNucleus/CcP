@@ -9,13 +9,13 @@ namespace Logic
 {
     public interface ICircleLogic : INotifyPropertyChanged
     {
-        int X { get; }
-        int Y { get; }
-        int Radius { get; }
-        int Ydir { get; }
-        int Xdir { get; }
+        float X { get; }
+        float Y { get; }
+        float Radius { get; }
+        float Ydir { get; }
+        float Xdir { get; }
         bool IsCollision { get; set;}
-        int Cordinates { get; }
+        float Cordinates { get; }
         void DoesPropertyChanged(string propertyName = null);
     }
 }

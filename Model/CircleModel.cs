@@ -12,9 +12,9 @@ namespace Model
 {
     public class CircleModel : ICircleModel
     {
-        private int xVal;
-        private int yVal;
-        private int radiusVal;
+        private float xVal;
+        private float yVal;
+        private float radiusVal;
         private readonly ICircleLogic circle;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -23,7 +23,7 @@ namespace Model
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public int Radius
+        public float Radius
         {
             get { return radiusVal*2; }
             set
@@ -32,7 +32,7 @@ namespace Model
                 //DoesPropertyChanged("Radius");
             }
         }
-        public int X
+        public float X
         {
             get { return xVal; }
             set
@@ -41,7 +41,7 @@ namespace Model
                 DoesPropertyChanged("X");
             }
         }
-        public int Y
+        public float Y
         {
             get { return yVal; }
             set

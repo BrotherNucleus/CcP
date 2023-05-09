@@ -69,7 +69,7 @@ namespace ViewModel
         public void OnStartButtonClicked()
         {
                 
-                modelApi.Visualise(30, CircleNumber, width, height);
+                modelApi.Visualise(15, CircleNumber, width, height);
                 StartButton = "working";
             
         }

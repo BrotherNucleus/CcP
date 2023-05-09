@@ -9,11 +9,11 @@ namespace Data
 {
     public interface ICircle : INotifyPropertyChanged
     {
-        int X { get; }
-        int Y { get; }
-        int Radius { get; }
+        float X { get; }
+        float Y { get; }
+        float Radius { get; }
 
-        int Cordinates { get; }
+        float Cordinates { get; }
 
         void DoesPropertyChanged(string propertyName = null);
     }

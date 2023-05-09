@@ -28,7 +28,7 @@ namespace Logic
         {
             DoesPropertyChanged("Cordinates");
         }
-        public int Radius
+        public float Radius
         {
             get => myCircle.Radius;
             set
@@ -49,7 +49,7 @@ namespace Logic
 
         public Color color { get; set; }
 
-        public int Xdir
+        public float Xdir
         {
             get => myCircle.XDir;
             set
@@ -60,7 +60,7 @@ namespace Logic
             }
         }
 
-        public int Ydir
+        public float Ydir
         {
             get => myCircle.YDir;
             set
@@ -71,7 +71,7 @@ namespace Logic
             }
         }
 
-        public int X
+        public float X
         {
             get => myCircle.X;
             set
@@ -82,7 +82,7 @@ namespace Logic
             }
         }
 
-        public int Y
+        public float Y
         {
             get => myCircle.Y;
             set
@@ -92,7 +92,7 @@ namespace Logic
             }
         }
 
-        public int Speed 
+        public float Speed 
         { get=> myCircle.Speed;
 
             set 
@@ -102,7 +102,7 @@ namespace Logic
             } 
         }
 
-        public int Cordinates
+        public float Cordinates
         {
             get => myCircle.Cordinates;
 

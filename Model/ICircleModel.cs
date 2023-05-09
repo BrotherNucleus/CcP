@@ -9,10 +9,10 @@ namespace Model
 {
     public interface  ICircleModel : INotifyPropertyChanged
     {
-        int X { get; }
-        int Y { get; }
+        float X { get; }
+        float Y { get; }
 
-        int Radius { get; }
+        float Radius { get; }
         void DoesPropertyChanged(string propertyName = null);
     }
 }

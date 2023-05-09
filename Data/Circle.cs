@@ -11,22 +11,22 @@ namespace Data
 {
     public class Circle : ICircle
     {
-        private int Xval;
-        private int Yval;
-        private int Speedval;
-        private int Radiusval;
+        private float Xval;
+        private float Yval;
+        private float Speedval;
+        private float Radiusval;
         private Random rand = new Random();
-        public int XDir = 0;
-        public int YDir = 0;
+        public float XDir = 0;
+        public float YDir = 0;
         public bool isCollision=false;
-        public int cordinates =1;
+        public float cordinates =1;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void DoesPropertyChanged(string propertyName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public Circle(int radius, Color clr, int x, int y, int speed)
+        public Circle(float radius, Color clr, float x, float y, float speed)
         {
             Radiusval = radius;
             color = clr;
@@ -39,7 +39,7 @@ namespace Data
                 YDir = rand.Next(-2, 2);
             }
         }
-        public int Radius
+        public float Radius
         {
             get => this.Radiusval;
             set
@@ -51,7 +51,7 @@ namespace Data
 
         public Color color { get; set; }
 
-        public int X
+        public float X
         {
             get => this.Xval;
             set
@@ -62,7 +62,7 @@ namespace Data
             }
         }
 
-        public int Y
+        public float Y
         {
             get => this.Yval;
             set
@@ -72,7 +72,7 @@ namespace Data
             }
         }
 
-        public int Speed
+        public float Speed
         {
             get => this.Speedval;
 
@@ -92,7 +92,7 @@ namespace Data
                 DoesPropertyChanged(nameof(IsCollision));
             }
         }
-        public int Cordinates
+        public float Cordinates
         {
             get => this.cordinates;
 
