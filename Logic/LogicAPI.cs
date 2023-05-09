@@ -30,7 +30,7 @@ namespace Logic
         {
             private DataAPI dataAPI;
 
-            private Semaphore semaphore = new Semaphore(0, 2);
+            private SemaphoreSlim semaphore = new SemaphoreSlim(1);
 
             private ConcurrentDictionary<ICircleLogic, ICircleLogic> colliding = new ConcurrentDictionary<ICircleLogic, ICircleLogic>();
             public override List <ICircleLogic> GetCircles()
@@ -60,30 +60,34 @@ namespace Logic
                 foreach (Circle circle in dataAPI.GetCircles())
                 {
                     circlesLogic.Add(new CircleLogic(circle));
+                    circle.PropertyChanged += ChangeCords;
                 }
             }
             public void ChangeCords(object sender, PropertyChangedEventArgs e)
             {
-                CircleLogic circle = (CircleLogic)sender;
-                if (e.PropertyName== "Cordinates")
+                Circle circle = (Circle)sender;
+                if (e.PropertyName == "Cordinates")
                 {
-                    Console.WriteLine("Change");
+                    Collision(circle);
+                    circle.IsCollision = false;
                 }
             }
 
-            public void Collision(object sender, PropertyChangedEventArgs e)
+            public void Collision(Circle origin)
             {
-                CircleLogic origin = (CircleLogic)sender;
-                semaphore.WaitOne();
-                CircleLogic potentialCollider = DetectCollision(origin);
+                //CircleLogic origin = (CircleLogic)sender;
+                
+                Circle potentialCollider = DetectCollision(origin);
                 if (potentialCollider != null)
                 {
-                    origin.Xdir *= -1;
-                    origin.Ydir *= -1;
-                    potentialCollider.Ydir *= -1;
-                    potentialCollider.Xdir *= -1;
+                    semaphore.Wait();
+                    origin.XDir *= -1;
+                    origin.YDir *= -1;
+                    potentialCollider.YDir *= -1;
+                    potentialCollider.XDir *= -1;
+                    semaphore.Release();
                 }
-                semaphore.Release();
+                
             }
             public void ChangeSpeed(CircleLogic circle)
             {
@@ -97,18 +101,18 @@ namespace Logic
                     thread.Start();
                 }
             }
-            public CircleLogic DetectCollision(CircleLogic circle)
+            public Circle DetectCollision(Circle circle)
             {
                 foreach (CircleLogic colidedCircle in this.circlesLogic)
                 {
-                    if (colidedCircle == circle)
+                    if (colidedCircle.myCircle == circle)
                     {
                         continue;
                     }
                     float dist = (float)Math.Sqrt((circle.X - colidedCircle.X) * (circle.X - colidedCircle.X) + (circle.Y - colidedCircle.Y) * (circle.Y - colidedCircle.Y));
                     if (dist <= circle.Radius + colidedCircle.Radius - 1)
                     {
-                        return colidedCircle;
+                        return colidedCircle.myCircle;
                     }
                 }
                 return null;

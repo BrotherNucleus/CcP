@@ -18,7 +18,7 @@ namespace Logic
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        private readonly Circle myCircle;
+        public Circle myCircle;
         public CircleLogic(Circle circle)
         {
             myCircle = circle;
@@ -35,6 +35,15 @@ namespace Logic
             {
                 this.Radius = value;
                 //DoesPropertyChanged(nameof(Radiusval));
+            }
+        }
+        public bool IsCollision
+        {
+            get => myCircle.isCollision;
+            set
+            {
+                myCircle.isCollision = value;
+                DoesPropertyChanged(nameof(IsCollision));
             }
         }
 
@@ -93,14 +102,28 @@ namespace Logic
             } 
         }
 
+        public int Cordinates
+        {
+            get => myCircle.Cordinates;
+
+            set
+            {
+                myCircle.Cordinates = value;
+                DoesPropertyChanged(nameof(Cordinates));
+            }
+        }
+
         public void MoveCircle()
         {
-            while (true)
+            
+            while (!myCircle.isCollision)
             {
                 if (X > 700 - Radius - 4 || X < 4) { Xdir *= -1; }
                 if (Y > 700 - Radius - 4 || Y < 4) { Ydir *= -1; }
                 X = X + Xdir * Speed;
                 Y = Y + Ydir * Speed;
+                Cordinates *= -1; 
+                //DoesPropertyChanged("Cordinates");
                 Thread.Sleep(10);
             }
 

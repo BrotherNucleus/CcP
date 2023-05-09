@@ -14,7 +14,8 @@ namespace Logic
         int Radius { get; }
         int Ydir { get; }
         int Xdir { get; }
-
+        bool IsCollision { get; set;}
+        int Cordinates { get; }
         void DoesPropertyChanged(string propertyName = null);
     }
 }

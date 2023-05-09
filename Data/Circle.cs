@@ -18,7 +18,8 @@ namespace Data
         private Random rand = new Random();
         public int XDir = 0;
         public int YDir = 0;
-
+        public bool isCollision=false;
+        public int cordinates =1;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void DoesPropertyChanged(string propertyName)
@@ -79,6 +80,26 @@ namespace Data
             {
                 this.Speedval = value;
                 //DoesPropertyChanged(nameof(Speed));
+            }
+        }
+        public bool IsCollision
+        {
+            get => this.isCollision;
+
+            set
+            {
+                this.isCollision = value;
+                DoesPropertyChanged(nameof(IsCollision));
+            }
+        }
+        public int Cordinates
+        {
+            get => this.cordinates;
+
+            set
+            {
+                this.cordinates = value;
+                DoesPropertyChanged(nameof(Cordinates));
             }
         }
     }

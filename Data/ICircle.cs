@@ -13,6 +13,8 @@ namespace Data
         int Y { get; }
         int Radius { get; }
 
+        int Cordinates { get; }
+
         void DoesPropertyChanged(string propertyName = null);
     }
 }
