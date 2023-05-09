@@ -16,8 +16,8 @@ namespace Data
         private int Speedval;
         private int Radiusval;
         private Random rand = new Random();
-        private int XDir = 0;
-        private int YDir = 0;
+        public int XDir = 0;
+        public int YDir = 0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -80,19 +80,6 @@ namespace Data
                 this.Speedval = value;
                 //DoesPropertyChanged(nameof(Speed));
             }
-        }
-
-        public void MoveCircle()
-        {
-            while (true)
-            {
-                if (X > 700 - Radius - 4 || X < 4) { XDir *= -1; }
-                if (Y > 700 - Radius - 4 || Y < 4) { YDir *= -1; }
-                X = X + XDir * Speed;
-                Y = Y + YDir * Speed;
-                Thread.Sleep(10);
-            }
-
         }
     }
 }

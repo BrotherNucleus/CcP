@@ -13,8 +13,6 @@ namespace Data
         }
         public abstract void createCircleList(int circleNumber, int radius, int width, int height);
         private List<ICircle> Circles = new List<ICircle>();
-        private List<Thread> threadList = new List<Thread>();
-        public abstract void Start();
         public abstract List<ICircle> GetCircles();
 
         public class DataLayer: DataAPI
@@ -29,11 +27,6 @@ namespace Data
                 {
                     Circle circle = createCircle(radius, width, height);
                     this.Circles.Add(circle);
-                }
-
-                foreach (Circle circle in Circles)
-                {
-                    this.threadList.Add(new Thread(new ThreadStart(circle.MoveCircle)));
                 }
             }
             public Circle createCircle(int radius, int width, int height)
@@ -70,17 +63,6 @@ namespace Data
             {
                 return this.Circles;
             }
-            public override void Start()
-            {
-                foreach (Thread thread in threadList)
-                {
-                    thread.Start();
-                }
-            }
-
-
-
-
         }
         
     }

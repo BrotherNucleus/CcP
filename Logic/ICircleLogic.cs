@@ -12,6 +12,8 @@ namespace Logic
         int X { get; }
         int Y { get; }
         int Radius { get; }
+        int Ydir { get; }
+        int Xdir { get; }
 
         void DoesPropertyChanged(string propertyName = null);
     }

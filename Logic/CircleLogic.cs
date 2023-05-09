@@ -40,6 +40,28 @@ namespace Logic
 
         public Color color { get; set; }
 
+        public int Xdir
+        {
+            get => myCircle.XDir;
+            set
+            {
+
+                myCircle.XDir = value;
+                DoesPropertyChanged(nameof(Xdir));
+            }
+        }
+
+        public int Ydir
+        {
+            get => myCircle.YDir;
+            set
+            {
+
+                myCircle.YDir = value;
+                DoesPropertyChanged(nameof(Ydir));
+            }
+        }
+
         public int X
         {
             get => myCircle.X;
@@ -69,6 +91,19 @@ namespace Logic
                 myCircle.Speed = value;
                 //DoesPropertyChanged(nameof(Speed));
             } 
+        }
+
+        public void MoveCircle()
+        {
+            while (true)
+            {
+                if (X > 700 - Radius - 4 || X < 4) { Xdir *= -1; }
+                if (Y > 700 - Radius - 4 || Y < 4) { Ydir *= -1; }
+                X = X + Xdir * Speed;
+                Y = Y + Ydir * Speed;
+                Thread.Sleep(10);
+            }
+
         }
 
     }
