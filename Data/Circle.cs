@@ -45,7 +45,7 @@ namespace Data
             set
             {
                 this.Radius = value;
-                //DoesPropertyChanged(nameof(Radiusval));
+                DoesPropertyChanged(nameof(Radius));
             }
         }
 

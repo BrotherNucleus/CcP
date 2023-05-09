@@ -34,7 +34,7 @@ namespace Logic
             set
             {
                 this.Radius = value;
-                //DoesPropertyChanged(nameof(Radiusval));
+                DoesPropertyChanged(nameof(Radius));
             }
         }
         public bool IsCollision
@@ -124,7 +124,7 @@ namespace Logic
                 Y = Y + Ydir * Speed;
                 Cordinates *= -1; 
                 //DoesPropertyChanged("Cordinates");
-                Thread.Sleep(10);
+                Thread.Sleep(40);
             }
 
         }

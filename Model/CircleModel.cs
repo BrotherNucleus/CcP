@@ -25,7 +25,7 @@ namespace Model
         }
         public int Radius
         {
-            get { return radiusVal; }
+            get { return radiusVal*2; }
             set
             {
                 radiusVal = value;

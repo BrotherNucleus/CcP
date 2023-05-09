@@ -110,7 +110,8 @@ namespace Logic
                     {
                         continue;
                     }
-                    float dist = (float)Math.Sqrt((circle.X - colidedCircle.X) * (circle.X - colidedCircle.X) + (circle.Y - colidedCircle.Y) * (circle.Y - colidedCircle.Y));
+                    float dist = (float)Math.Sqrt((circle.X - colidedCircle.X ) * (circle.X  - colidedCircle.X ) 
+                        + (circle.Y - colidedCircle.Y ) * (circle.Y - colidedCircle.Y));
                     if (dist <= circle.Radius + colidedCircle.Radius - 1)
                     {
                         return colidedCircle.myCircle;
