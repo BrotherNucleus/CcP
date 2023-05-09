@@ -86,6 +86,7 @@ namespace Logic
                     potentialCollider.YDir *= -1;
                     potentialCollider.XDir *= -1;
                     semaphore.Release();
+                    
                 }
                 
             }
