@@ -40,7 +40,7 @@ namespace Data
                     valid = true;
                     x = random.Next(radius, width - radius);
                     y = random.Next(radius, height - radius);
-                    speed = random.Next(1, 5);
+                    speed = random.Next(3, 9);
                     foreach (Circle b in this.Circles)
                     {
                         double distance = Math.Sqrt(((b.X - x) * (b.X - x)) + ((b.Y - y) * (b.Y - y)));

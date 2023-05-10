@@ -40,8 +40,8 @@ namespace Data
             mass = Mass;
             while (XDir == 0 || YDir == 0)
             {
-                XDir = rand.Next(-2, 2);
-                YDir = rand.Next(-2, 2);
+                XDir = (float)rand.NextDouble() * 2 - 1;
+                YDir = (float)rand.NextDouble() * 2 - 1;
             }
             pos = new Vector2(Xval, Yval);
             vel = new Vector2(XDir, YDir);
