@@ -87,6 +87,8 @@ namespace TPWTests
 
             Assert.AreEqual(testX, circle.X);
             Assert.AreEqual(testY, circle.Y);
+            Assert.AreEqual(testX, circle.Pos.X);
+            Assert.AreEqual(testY, circle.Pos.Y);
 
             circle.X = changedX;
             circle.Y = changedY;
