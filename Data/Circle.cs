@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,23 +22,29 @@ namespace Data
         public bool isCollision=false;
         public float cordinates =1;
         public event PropertyChangedEventHandler PropertyChanged;
+        public float mass;
+        public Vector2 pos;
+        public Vector2 vel;
 
         public void DoesPropertyChanged(string propertyName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public Circle(float radius, Color clr, float x, float y, float speed)
+        public Circle(float radius, Color clr, float x, float y, float speed, float Mass)
         {
             Radiusval = radius;
             color = clr;
             Xval = x;
             Yval = y;
             Speedval = speed;
+            mass = Mass;
             while (XDir == 0 || YDir == 0)
             {
                 XDir = rand.Next(-2, 2);
                 YDir = rand.Next(-2, 2);
             }
+            pos = new Vector2(Xval, Yval);
+            vel = new Vector2(XDir, YDir);
         }
         public float Radius
         {
@@ -46,6 +53,36 @@ namespace Data
             {
                 this.Radius = value;
                 DoesPropertyChanged(nameof(Radius));
+            }
+        }
+
+        public Vector2 Pos
+        {
+            get => this.pos;
+            set
+            {
+                this.pos = value;
+                DoesPropertyChanged(nameof(Pos));
+            }
+        }
+
+        public Vector2 Vel
+        {
+            get => this.vel;
+            set
+            {
+                this.vel = value;
+                DoesPropertyChanged(nameof(vel));
+            }
+        }
+
+        public float Mass
+        {
+            get => this.mass;
+            set
+            {
+                this.mass = value;
+                //DoesPropertyChanged(nameof(Mass));
             }
         }
 

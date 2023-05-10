@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 using Data;
@@ -44,6 +45,26 @@ namespace Logic
             {
                 myCircle.isCollision = value;
                 DoesPropertyChanged(nameof(IsCollision));
+            }
+        }
+
+        public Vector2 Pos
+        {
+            get => myCircle.Pos;
+            set
+            {
+                myCircle.Pos = value;
+                DoesPropertyChanged(nameof(Pos));
+            }
+        }
+
+        public Vector2 Vel
+        {
+            get => myCircle.Vel;
+            set
+            {
+                myCircle.Vel = value;
+                DoesPropertyChanged(nameof(Vel));
             }
         }
 
@@ -118,13 +139,34 @@ namespace Logic
             
             while (!myCircle.isCollision)
             {
-                if (X > 700 - Radius - 4 || X < 4) { Xdir *= -1; }
-                if (Y > 700 - Radius - 4 || Y < 4) { Ydir *= -1; }
-                X = X + Xdir * Speed;
-                Y = Y + Ydir * Speed;
+                if (Pos.X > 700 - Radius*2 - 4) 
+                {
+                    Vector2 nvel = new Vector2(Vel.X, Vel.Y);
+                    nvel.X = -Math.Abs(Vel.X);
+                    Vel = nvel;
+                }
+                else if (Pos.X < 4)
+                {
+                    Vector2 nvel = new Vector2(Vel.X, Vel.Y);
+                    nvel.X = Math.Abs(Vel.X);
+                    Vel = nvel;
+                }
+                if (Pos.Y > 700 - Radius*2 - 4) 
+                {
+                    Vector2 nvel = new Vector2(Vel.X, Vel.Y);
+                    nvel.Y = -Math.Abs(Vel.Y);
+                    Vel = nvel;
+                }
+                else if(Pos.Y < 4)
+                {
+                    Vector2 nvel = new Vector2(Vel.X, Vel.Y);
+                    nvel.Y = Math.Abs(Vel.Y);
+                    Vel = nvel;
+                }
+                Pos += Vel;
                 Cordinates *= -1; 
                 //DoesPropertyChanged("Cordinates");
-                Thread.Sleep(40);
+                Thread.Sleep(10);
             }
 
         }

@@ -57,7 +57,7 @@ namespace Data
                     valid = true;
 
                 } while (!valid);
-                return new Circle(radius, Color.AliceBlue, x, y, speed);
+                return new Circle(radius, Color.AliceBlue, x, y, speed, 10);
             }
             public override List<ICircle> GetCircles()
             {

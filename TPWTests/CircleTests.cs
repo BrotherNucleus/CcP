@@ -18,7 +18,7 @@ namespace TPWTests
             int testX = 0;
             int testY = 0;
             Color testColor = Color.Tomato;
-            Circle circ = new Circle(testRadius, testColor, testX, testY, 2);
+            Circle circ = new Circle(testRadius, testColor, testX, testY, 2, 10);
 
             CircleLogic circle = new CircleLogic(circ);
 
@@ -38,7 +38,7 @@ namespace TPWTests
             int testY = 0;
             Color testColor = Color.Tomato;
 
-            Circle circ = new Circle(testRadius, testColor, testX, testY, 2);
+            Circle circ = new Circle(testRadius, testColor, testX, testY, 2, 10);
 
             CircleLogic circle = new CircleLogic(circ);
 
@@ -59,7 +59,7 @@ namespace TPWTests
             Color testColor = Color.Tomato;
             Color changedColor = Color.SteelBlue;
 
-            Circle circ = new Circle(testRadius, testColor, testX, testY, 2);
+            Circle circ = new Circle(testRadius, testColor, testX, testY, 2, 10);
 
             CircleLogic circle = new CircleLogic(circ);
 
@@ -81,7 +81,7 @@ namespace TPWTests
             int changedX = 12;
             int changedY = 32;
 
-            Circle circ = new Circle(testRadius, testColor, testX, testY, 2);
+            Circle circ = new Circle(testRadius, testColor, testX, testY, 2, 10);
 
             CircleLogic circle = new CircleLogic(circ);
 

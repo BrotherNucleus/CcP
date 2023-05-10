@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,8 +32,6 @@ namespace Logic
             private DataAPI dataAPI;
 
             private SemaphoreSlim semaphore = new SemaphoreSlim(1);
-
-            private ConcurrentDictionary<ICircleLogic, ICircleLogic> colliding = new ConcurrentDictionary<ICircleLogic, ICircleLogic>();
             public override List <ICircleLogic> GetCircles()
             {
                 return this.circlesLogic;
@@ -81,18 +80,24 @@ namespace Logic
                 if (potentialCollider != null)
                 {
                     semaphore.Wait();
-                    origin.XDir *= -1;
-                    origin.YDir *= -1;
-                    potentialCollider.YDir *= -1;
-                    potentialCollider.XDir *= -1;
+                    Vector2 newOriginVel = newVel(origin, potentialCollider);
+                    Vector2 newColliderVel = newVel(potentialCollider, origin);
+                    origin.Vel = newOriginVel;
+                    potentialCollider.Vel = newColliderVel;
                     semaphore.Release();
                     
                 }
                 
             }
-            public void ChangeSpeed(CircleLogic circle)
+            
+            private Vector2 newVel(Circle c1, Circle c2)
             {
-
+                var c1Vel = c1.Vel;
+                var c2Vel = c2.Vel;
+                var posDiff = c1.Pos - c2.Pos;
+                return c1.Vel - 2.0f * c2.Mass / (c1.Mass + c2.Mass)
+                       * (Vector2.Dot(c1Vel - c2Vel, posDiff) * posDiff) /
+                       (float)Math.Pow(posDiff.Length(), 2);
             }
             public override void Start()
             {
@@ -110,8 +115,8 @@ namespace Logic
                     {
                         continue;
                     }
-                    float dist = (float)Math.Sqrt((circle.X - colidedCircle.X ) * (circle.X  - colidedCircle.X ) 
-                        + (circle.Y - colidedCircle.Y ) * (circle.Y - colidedCircle.Y));
+                    float dist = (float)Math.Sqrt((circle.Pos.X - colidedCircle.Pos.X ) * (circle.Pos.X  - colidedCircle.Pos.X ) 
+                        + (circle.Pos.Y - colidedCircle.Pos.Y ) * (circle.Pos.Y - colidedCircle.Pos.Y));
                     if (dist <= circle.Radius + colidedCircle.Radius - 1)
                     {
                         return colidedCircle.myCircle;

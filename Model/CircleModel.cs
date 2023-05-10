@@ -55,22 +55,22 @@ namespace Model
         {
             this.circle = circle;
             this.circle.PropertyChanged += OnPropertyChanged;
-            X = circle.X;
-            Y = circle.Y;
+            X = circle.Pos.X;
+            Y = circle.Pos.Y;
             Radius = circle.Radius;
         }
         public void Update()
         {
-            X = circle.X;
-            Y = circle.Y;
+            X = circle.Pos.X;
+            Y = circle.Pos.Y;
         }
 
         private void OnPropertyChanged( object sender, PropertyChangedEventArgs e)
         {
             ICircleLogic c = (ICircleLogic)sender;
 
-            X = c.X;
-            Y = c.Y;
+            X = c.Pos.X;
+            Y = c.Pos.Y;
         }
     }
 }
