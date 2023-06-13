@@ -11,11 +11,15 @@ namespace Logic
 {
     public interface ICircleLogic : INotifyPropertyChanged
     {
+        [JsonIgnore]
         float X { get; }
+        [JsonIgnore]
         float Y { get; }
         [JsonIgnore]
         float Radius { get; }
+        [JsonIgnore]
         float Ydir { get; }
+        [JsonIgnore]
         float Xdir { get; }
         [JsonIgnore]
         bool IsCollision { get; set;}

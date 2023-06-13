@@ -13,38 +13,29 @@ namespace Logic
     public class Logger
     {
         private static List<ICircleLogic> circles;
-        private Stopwatch stopwatch;
         private bool isLogging = true;
+        private Timer timer;
+        private int msInterval;
 
-        public Logger(List<ICircleLogic> circleList) {
-            
+        public Logger(List<ICircleLogic> circleList)
+        {
             circles = circleList;
-            Thread thread = new Thread(() => StartLogging(100));
-            thread.IsBackground = true;
-            thread.Start();
+            msInterval = 500;
+            timer = new Timer(LogData, null, 0, msInterval);
         }
 
-        public void StartLogging(int msInterwal) 
+        public void LogData(object state)
         {
-            stopwatch = Stopwatch.StartNew();
-
-            while(isLogging)
+            StringWriter sw = new StringWriter();
+            string time = $"{DateTime.Now:o}";
+            foreach (ICircleLogic circle in circles)
             {
-                if (stopwatch.ElapsedMilliseconds < msInterwal)
-                {
-                    StringWriter sw = new StringWriter();
-                    stopwatch.Restart();
-                    string time = ($"{DateTime.Now:o}");
-                    foreach (ICircleLogic circle in circles)
-                    {
-                        sw.WriteLine(time + ";"+ JsonSerializer.Serialize(circle));
+                sw.WriteLine(time + ";" + JsonSerializer.Serialize(circle));
+            }
 
-                    }
-                    using (StreamWriter file = new StreamWriter("log.txt",true))
-                    {
-                        file.WriteLine(sw.ToString());
-                    }
-                }
+            using (StreamWriter file = new StreamWriter("log.txt", true))
+            {
+                file.WriteLine(sw.ToString());
             }
         }
     }
