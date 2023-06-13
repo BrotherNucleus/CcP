@@ -27,6 +27,8 @@ namespace Logic
         public abstract void createCircleList(int circleNumber, int radius, int width, int height);
         public abstract void Start();
         public abstract List<ICircleLogic> GetCircles();
+
+        public ConcurrentDictionary<ICircle, ICircle> collided = new ConcurrentDictionary<ICircle, ICircle>();
         public class LogicLayer : LogicAPI
         {
             private DataAPI dataAPI;
@@ -85,8 +87,11 @@ namespace Logic
                     Vector2 newColliderVel = newVel(potentialCollider, origin);
                     origin.Vel = newOriginVel;
                     potentialCollider.Vel = newColliderVel;
+                    collided.Remove(origin, out _);
+                    collided.Remove(potentialCollider, out _);
+                    collided.TryAdd(origin, potentialCollider);
+                    collided.TryAdd(potentialCollider, origin);
                     semaphore.Release();
-                    
                 }
                 
             }
@@ -113,13 +118,17 @@ namespace Logic
             {
                 foreach (CircleLogic colidedCircle in this.circlesLogic)
                 {
+                    if(collided.TryGetValue(circle, out var circleOne) && collided.TryGetValue(colidedCircle.myCircle, out var circleTwo) && circle ==  circleOne && colidedCircle.myCircle == circleTwo)
+                    {
+                        continue;
+                    }
                     if (colidedCircle.myCircle == circle)
                     {
                         continue;
                     }
-                    float dist = (float)Math.Sqrt((circle.Pos.X - colidedCircle.Pos.X ) * (circle.Pos.X  - colidedCircle.Pos.X ) 
-                        + (circle.Pos.Y - colidedCircle.Pos.Y ) * (circle.Pos.Y - colidedCircle.Pos.Y));
-                    if (dist <= circle.Radius + colidedCircle.Radius - 1)
+                    float dist = (float)Math.Sqrt((circle.Pos.X - colidedCircle.myCircle.Pos.X ) * (circle.Pos.X  - colidedCircle.myCircle.Pos.X ) 
+                        + (circle.Pos.Y - colidedCircle.myCircle.Pos.Y ) * (circle.Pos.Y - colidedCircle.myCircle.Pos.Y));
+                    if (dist <= circle.Radius + colidedCircle.myCircle.Radius + 1 && dist > circle.Radius + colidedCircle.myCircle.Radius - 5)
                     {
                         return colidedCircle.myCircle;
                     }
