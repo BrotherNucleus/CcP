@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Logic
@@ -12,12 +13,20 @@ namespace Logic
     {
         float X { get; }
         float Y { get; }
+        [JsonIgnore]
         float Radius { get; }
         float Ydir { get; }
         float Xdir { get; }
+        [JsonIgnore]
         bool IsCollision { get; set;}
+        [JsonIgnore]
         float Cordinates { get; }
+        [JsonIgnore]
         Vector2 Pos { get; }
+        float PosX { get => Pos.X; }
+        float PoxY { get => Pos.Y; }
+
+        [JsonIgnore]
         Vector2 Vel { get; }
         void DoesPropertyChanged(string propertyName = null);
     }

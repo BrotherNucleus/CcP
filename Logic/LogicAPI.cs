@@ -32,6 +32,7 @@ namespace Logic
             private DataAPI dataAPI;
 
             private SemaphoreSlim semaphore = new SemaphoreSlim(1);
+            Logger logger;
             public override List <ICircleLogic> GetCircles()
             {
                 return this.circlesLogic;
@@ -106,6 +107,7 @@ namespace Logic
                 {
                     thread.Start();
                 }
+                logger = new Logger(GetCircles());
             }
             public Circle DetectCollision(Circle circle)
             {
